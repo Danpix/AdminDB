@@ -23,7 +23,7 @@ public static ConfigurableApplicationContext context;
 		FXMLLoader fxml= new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/InicioSesion.fxml"));
 		fxml.setControllerFactory(context::getBean);
 		Scene scene = new Scene(fxml.load());
-		stage.setTitle("Holaaaaaaaa");
+
 		stage.setScene(scene);
 		stage.show();
 	}
