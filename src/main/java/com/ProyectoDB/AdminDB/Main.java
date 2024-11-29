@@ -16,7 +16,11 @@ public static ConfigurableApplicationContext context;
 		SpringApplication.run(Main.class, args);
 
 	}
+//	insert into empleado(id_empleado,password,rfc_emp,apellidos_empleado,username,puesto_emp)
+//	values(1,'1234','cack030312345','Chan Chalé','kevin','admin');
 
+//	insert into empleado(id_empleado,password,rfc_emp,apellidos_empleado,username,puesto_emp)
+//	values(2,'4321','cack124231345','Chan Chin','cervantes','vendedor');
 	@Override
 	public void start(Stage stage) throws Exception {
 		context = SpringApplication.run(Main.class);

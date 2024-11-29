@@ -3,6 +3,8 @@ package com.ProyectoDB.AdminDB.Modelos;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table (name = "cliente")
 @Data
@@ -16,4 +18,8 @@ public class Cliente {
     private String telefono_cliente;
     @Column(length = 50)
     private String email_cliente;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Venta> ventas;
+
 }

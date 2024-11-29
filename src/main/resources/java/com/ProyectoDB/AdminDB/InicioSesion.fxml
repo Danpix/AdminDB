@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ProyectoDB.AdminDB.Controladores.ControllerInicio">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="301.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="400.0" fitWidth="301.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../../Users/Usuario/Downloads/Leonardo_Phoenix_Un_estudio_de_arte_kawaii_en_blanco_y_negro_c_0.jpg" />
          </image>

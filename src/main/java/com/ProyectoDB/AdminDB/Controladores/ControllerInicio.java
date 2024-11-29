@@ -10,17 +10,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 
+import static com.ProyectoDB.AdminDB.Main.context;
 
 
 @Controller
 public class ControllerInicio {
-    @Autowired
-    private RepositorioEmpleado repositorioEmpleado;
+
     @Autowired
     public EmpleadosServicio empleadosServicio;
 
@@ -30,8 +29,7 @@ public class ControllerInicio {
     public TextField txtNombre;
     @FXML
     public Button btnGuardar;
-    @FXML
-    public TextField txtEmail;
+
 
     private boolean aceptado;
     @FXML
@@ -41,6 +39,7 @@ public class ControllerInicio {
 //        empleado.setPassword("1234");
         if (empleadosServicio.validarUsuario(txtNombre.getText(), txtContraseña.getText())){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/MenuInicio.fxml"));
+            loader.setControllerFactory(context::getBean);
             try {
                 Scene scene=new Scene(loader.load());
                 Stage stage=(Stage) btnGuardar.getScene().getWindow();

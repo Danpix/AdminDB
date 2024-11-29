@@ -19,5 +19,16 @@ public class Venta {
     private Date fecha;
 
     @Column(nullable = false)
-    private Integer total, id_cliente;
+    private Integer total;
+
+    @ManyToOne
+    @JoinColumn(name = "id_empleado",nullable = false)
+    private Empleado empleado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cliente",nullable = false)
+    private Cliente cliente;
+
+    @OneToOne
+    private DetalleVenta detalleVenta;
 }
