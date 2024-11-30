@@ -14,8 +14,8 @@ public class Producto {
     private Integer id_producto;
     @Column(nullable = false)
     private Integer unidades_existencia,precio_compra,precio_venta;
-    @Column(nullable = false, length = 30)
-    private String nombre_producto;
+    @Column(name = "nombre_producto",nullable = false, length = 30)
+    private String nombreproducto;
 
     @ManyToMany(mappedBy = "productos")
     private List<DetalleVenta>detalleVentas;

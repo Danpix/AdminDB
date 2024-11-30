@@ -29,21 +29,22 @@ public class ControllerInicio {
     public TextField txtNombre;
     @FXML
     public Button btnGuardar;
+    public Button btnSalir;
+    public Button btnIngresar;
 
 
-    private boolean aceptado;
+
     @FXML
     public void Comprueba(){
 
-//        empleado.setUsername("Kevin");
-//        empleado.setPassword("1234");
         if (empleadosServicio.validarUsuario(txtNombre.getText(), txtContraseña.getText())){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/MenuInicio.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/MenuInicioB.fxml"));
             loader.setControllerFactory(context::getBean);
             try {
                 Scene scene=new Scene(loader.load());
-                Stage stage=(Stage) btnGuardar.getScene().getWindow();
+                Stage stage=(Stage) btnIngresar.getScene().getWindow();
                 stage.setScene(scene);
+                stage.centerOnScreen();
                 stage.show();
             } catch (IOException e) {
                 System.out.println("GG el proyecto fallo");
@@ -54,5 +55,9 @@ public class ControllerInicio {
     }
     public void IniciarSesion(ActionEvent actionEvent) {
         Comprueba();
+    }
+
+    public void Salir(ActionEvent actionEvent) {
+        System.exit(0);
     }
 }

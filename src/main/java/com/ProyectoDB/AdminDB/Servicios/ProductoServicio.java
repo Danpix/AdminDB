@@ -15,4 +15,7 @@ public class ProductoServicio {
     public List<Producto> obtenerTodosLosProductos() {
         return repositorioProducto.findAll();
     }
+    public List<Producto> buscarNombre(String nombre_producto){
+        return repositorioProducto.findByNombreproductoContaining(nombre_producto);
+    }
 }
