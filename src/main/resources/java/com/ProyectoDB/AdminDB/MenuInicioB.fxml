@@ -34,7 +34,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <MenuButton maxHeight="250.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" popupSide="RIGHT" prefHeight="0.0" prefWidth="140.0" style="-fx-background-color: #382D00;" text="Productos" textFill="#e2d7aa">
+            <MenuButton maxHeight="250.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" popupSide="RIGHT" prefHeight="0.0" prefWidth="140.0" style="-fx-background-color: #382D00;" stylesheets="@../../../../Styles/MenuInicioB.css" text="Productos" textFill="#e2d7aa">
                <items>
                   <MenuItem mnemonicParsing="false" text="Action 1" />
                   <MenuItem mnemonicParsing="false" text="Action 2" />

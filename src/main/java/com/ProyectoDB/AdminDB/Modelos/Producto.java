@@ -11,7 +11,8 @@ import java.util.List;
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_producto;
+    @Column(name = "id_producto")
+    private Integer idproducto;
     @Column(nullable = false)
     private Integer unidades_existencia,precio_compra,precio_venta;
     @Column(name = "nombre_producto",nullable = false, length = 30)

@@ -39,12 +39,12 @@
             </ImageView>
             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="197.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Icons/Cuenta.png" />
+                  <Image url="@../../../../Icons/usuario.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="197.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Icons/contraseña.png" />
+                  <Image url="@../../../../Icons/contra.png" />
                </image>
             </ImageView>
          </children>
