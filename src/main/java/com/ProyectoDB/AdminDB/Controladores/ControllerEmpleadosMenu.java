@@ -4,7 +4,9 @@ import com.ProyectoDB.AdminDB.Modelos.Empleado;
 import com.ProyectoDB.AdminDB.Repositorios.RepositorioEmpleado;
 import com.ProyectoDB.AdminDB.Servicios.EmpleadosServicio;
 import com.ProyectoDB.AdminDB.repetidas.SalidaSesiones;
+import jakarta.transaction.Transactional;
 import javafx.beans.Observable;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import static com.ProyectoDB.AdminDB.Main.context;
 
@@ -37,11 +40,15 @@ public class ControllerEmpleadosMenu {
     public ChoiceBox cmbPuesto;
     public Button btnBuscar;
     public Button btnCerrarSesion;
+    public Integer idSeleccionado;
+    public PasswordField txtContraseña;
 
     public void SeleccionarUsuario(MouseEvent mouseEvent) {
         Empleado emp = this.tableEmpleados.getSelectionModel().getSelectedItem();
+        idSeleccionado=emp.getIdempleado();
         txtApellidos.setText(emp.getApellidos_empleado());
         txtRfc.setText(emp.getRfc_emp());
+        txtContraseña.setText(emp.getPassword());
         txtUsuario.setText(emp.getUsername());
     }
 
@@ -57,12 +64,73 @@ public class ControllerEmpleadosMenu {
         sal.InicioSesion(btnCerrarSesion);
     }
     public void MostrarTodos(ObservableList<Empleado> empleados){
-        id_empT.setCellValueFactory(new PropertyValueFactory<>("id_empleado"));
+        id_empT.setCellValueFactory(new PropertyValueFactory<>("idempleado"));
         usuario_empT.setCellValueFactory(new PropertyValueFactory<>("username"));
         rfc_empT.setCellValueFactory(new PropertyValueFactory<>("rfc_emp"));
         apellidos_empT.setCellValueFactory(new PropertyValueFactory<>("apellidos_empleado"));
         puesto_empT.setCellValueFactory(new PropertyValueFactory<>("puesto_emp"));
         tableEmpleados.setItems(empleados);
+        tableEmpleados.refresh();
+    }
+
+    public void Eliminar(ActionEvent actionEvent) {
+        empleadosServicio.eliminarEmpleado(idSeleccionado);
+        tableEmpleados.refresh();
+        txtApellidos.clear();
+        txtApellidos.clear();
+        txtRfc.clear();
+        txtContraseña.clear();
+        List<Empleado> empleados=empleadosServicio.MostrarTodos();
+        ObservableList<Empleado> observableEmp = FXCollections.observableArrayList(empleados);
+        id_empT.setCellValueFactory(new PropertyValueFactory<>("idempleado"));
+        usuario_empT.setCellValueFactory(new PropertyValueFactory<>("username"));
+        rfc_empT.setCellValueFactory(new PropertyValueFactory<>("rfc_emp"));
+        apellidos_empT.setCellValueFactory(new PropertyValueFactory<>("apellidos_empleado"));
+        puesto_empT.setCellValueFactory(new PropertyValueFactory<>("puesto_emp"));
+        tableEmpleados.setItems(observableEmp);
+        tableEmpleados.refresh();
+    }
+
+    public void GuardarEmp(ActionEvent actionEvent) {
+        Empleado emp = new Empleado();
+        emp.setRfc_emp(txtRfc.getText());
+        emp.setApellidos_empleado(txtApellidos.getText());
+        emp.setUsername(txtUsuario.getText());
+        emp.setPassword(txtContraseña.getText());
+        emp.setPuesto_emp("Admin");
+        empleadosServicio.GuardarEmpleados(emp);
+        txtApellidos.clear();
+        txtApellidos.clear();
+        txtUsuario.clear();
+        txtRfc.clear();
+        txtContraseña.clear();
+        List<Empleado> empleados=empleadosServicio.MostrarTodos();
+        ObservableList<Empleado> observableEmp = FXCollections.observableArrayList(empleados);
+        id_empT.setCellValueFactory(new PropertyValueFactory<>("idempleado"));
+        usuario_empT.setCellValueFactory(new PropertyValueFactory<>("username"));
+        rfc_empT.setCellValueFactory(new PropertyValueFactory<>("rfc_emp"));
+        apellidos_empT.setCellValueFactory(new PropertyValueFactory<>("apellidos_empleado"));
+        puesto_empT.setCellValueFactory(new PropertyValueFactory<>("puesto_emp"));
+        tableEmpleados.setItems(observableEmp);
+        tableEmpleados.refresh();
+    }
+
+    public void Modificaremp(ActionEvent actionEvent) {
+        
+        empleadosServicio.modificarUsuario(idSeleccionado,txtUsuario.getText(),txtApellidos.getText(),txtContraseña.getText(),txtRfc.getText());
+        txtApellidos.clear();
+        txtApellidos.clear();
+        txtUsuario.clear();
+        txtRfc.clear();
+        txtContraseña.clear();
+        List<Empleado> empleados=empleadosServicio.MostrarTodos();
+        ObservableList<Empleado> observableEmp = FXCollections.observableArrayList(empleados);
+        id_empT.setCellValueFactory(new PropertyValueFactory<>("idempleado"));
+        usuario_empT.setCellValueFactory(new PropertyValueFactory<>("username"));
+        rfc_empT.setCellValueFactory(new PropertyValueFactory<>("rfc_emp"));
+        apellidos_empT.setCellValueFactory(new PropertyValueFactory<>("apellidos_empleado"));
+        puesto_empT.setCellValueFactory(new PropertyValueFactory<>("puesto_emp"));
+        tableEmpleados.setItems(observableEmp);
         tableEmpleados.refresh();
     }
 }

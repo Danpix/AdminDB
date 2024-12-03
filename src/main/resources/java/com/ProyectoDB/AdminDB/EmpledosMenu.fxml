@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -155,13 +156,13 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="470.0" style="-fx-background-color: #e2d7aa;">
                      <children>
-                        <Label layoutX="61.0" layoutY="127.0" text="RFC" />
-                        <Label layoutX="46.0" layoutY="192.0" text="USUARIO" />
-                        <Label layoutX="53.0" layoutY="257.0" text="APELLIDOS" />
-                        <TextField fx:id="txtRfc" layoutX="140.0" layoutY="123.0" />
-                        <TextField fx:id="txtUsuario" layoutX="140.0" layoutY="188.0" />
-                        <TextField fx:id="txtApellidos" layoutX="140.0" layoutY="253.0" />
-                        <Button fx:id="btnGuardarDatos" layoutX="123.0" layoutY="386.0" mnemonicParsing="false" style="-fx-background-color: #382D00;" text="GUARDAR" textFill="#e2d7aa">
+                        <Label layoutX="62.0" layoutY="222.0" text="RFC" />
+                        <Label layoutX="43.0" layoutY="121.0" text="USUARIO" />
+                        <Label layoutX="52.0" layoutY="278.0" text="APELLIDOS" />
+                        <TextField fx:id="txtRfc" layoutX="141.0" layoutY="218.0" />
+                        <TextField fx:id="txtUsuario" layoutX="137.0" layoutY="117.0" />
+                        <TextField fx:id="txtApellidos" layoutX="140.0" layoutY="274.0" />
+                        <Button fx:id="btnGuardarDatos" layoutX="59.0" layoutY="388.0" mnemonicParsing="false" onAction="#GuardarEmp" style="-fx-background-color: #382D00;" text="GUARDAR" textFill="#e2d7aa">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -173,6 +174,18 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
+                        <Button fx:id="btnEliminarEmp" layoutX="215.0" layoutY="388.0" mnemonicParsing="false" onAction="#Eliminar" style="-fx-background-color: #382D00;" text="ELMINAR" textFill="#e2d7aa">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <PasswordField fx:id="txtContraseña" layoutX="145.0" layoutY="171.0" />
+                        <Label layoutX="57.0" layoutY="175.0" text="Contraseña" />
+                        <Button fx:id="btnModificar" layoutX="152.0" layoutY="459.0" mnemonicParsing="false" onAction="#Modificaremp" style="-fx-background-color: #382D00;" text="MODIFICAR" textFill="#e2d7aa">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
               </items>
