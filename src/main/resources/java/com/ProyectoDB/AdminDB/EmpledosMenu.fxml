@@ -2,20 +2,23 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ProyectoDB.AdminDB.Controladores.ContollerMenuInicio">
+<BorderPane prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ProyectoDB.AdminDB.Controladores.ControllerEmpleadosMenu">
    <left>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="350.0" prefWidth="140.0" style="-fx-background-color: #382D00;" BorderPane.alignment="CENTER">
          <children>
@@ -74,8 +77,8 @@
             </MenuButton>
             <MenuButton alignment="BOTTOM_LEFT" maxHeight="250.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" popupSide="RIGHT" prefHeight="0.0" prefWidth="140.0" style="-fx-background-color: #382D00;" stylesheets="@../../../../Styles/MenuInicioB.css" text="Clientes" textFill="#e2d7aa">
                <items>
-                  <MenuItem fx:id="mnModificar" mnemonicParsing="false" text="MODIFICAR CLIENTES" />
-                  <MenuItem mnemonicParsing="false" text="ELIMINAR CLIENTES" />
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
                </items>
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -112,8 +115,8 @@
             </MenuButton>
             <MenuButton alignment="BOTTOM_LEFT" maxHeight="250.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" popupSide="RIGHT" prefHeight="0.0" prefWidth="140.0" style="-fx-background-color: #382D00;" stylesheets="@../../../../Styles/MenuInicioB.css" text="Empleados" textFill="#e2d7aa">
                <items>
-                  <MenuItem fx:id="mIModificarEmp" mnemonicParsing="false" onAction="#ModificarClientes" text="MODIFICAR EMPLEADOS" />
-                  <MenuItem mnemonicParsing="false" text="ELIMINAR EMPLADOS" />
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
                </items>
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -135,44 +138,45 @@
    <center>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tableview" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="298.0" prefWidth="460.0" style="-fx-background-color: #E2D7AA;" VBox.vgrow="ALWAYS">
-               <columns>
-                  <TableColumn fx:id="id_producto" prefWidth="87.19998168945312" text="ID" />
-                  <TableColumn fx:id="nombre_producto" prefWidth="347.1999969482422" text="NOMBRE" />
-                  <TableColumn fx:id="precio_venta" minWidth="0.0" prefWidth="135.199951171875" text="PRECIO" />
-                  <TableColumn fx:id="cantidad" prefWidth="140.0" text="CANTIDAD" />
-                  <TableColumn fx:id="subtotal" prefWidth="139.2000732421875" text="SUBTOTAL" />
-                  <TableColumn fx:id="unidades_existencia" prefWidth="110.4000244140625" text="EXISTENCIA" />
-               </columns>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </TableView>
-            <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="460.0" style="-fx-background-color: #4B4738;">
-               <children>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="100.0" text="TOTAL" textFill="#e2d7aa">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets bottom="4.0" top="5.0" />
-                     </HBox.margin></Label>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="170.0" text="\$0.00" textFill="#e2d7aa">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets bottom="4.0" top="5.0" />
-                     </HBox.margin></Label>
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #AA8800;" text="VENDER">
-                     <HBox.margin>
-                        <Insets bottom="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="18.0" />
-                     </font></Button>
-               </children>
-            </HBox>
+            <SplitPane dividerPositions="0.6294363256784968" prefHeight="550.0" prefWidth="960.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <TableView fx:id="tableEmpleados" onMouseClicked="#SeleccionarUsuario" prefHeight="551.0" prefWidth="602.0">
+                          <columns>
+                            <TableColumn fx:id="id_empT" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="rfc_empT" prefWidth="178.0" text="RFC" />
+                              <TableColumn fx:id="usuario_empT" prefWidth="102.0" text="USUARIO" />
+                              <TableColumn fx:id="apellidos_empT" prefWidth="153.0" text="APELLIDOS" />
+                              <TableColumn fx:id="puesto_empT" prefWidth="93.0" text="PUESTO" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="470.0" style="-fx-background-color: #e2d7aa;">
+                     <children>
+                        <Label layoutX="61.0" layoutY="127.0" text="RFC" />
+                        <Label layoutX="46.0" layoutY="192.0" text="USUARIO" />
+                        <Label layoutX="53.0" layoutY="257.0" text="APELLIDOS" />
+                        <TextField fx:id="txtRfc" layoutX="140.0" layoutY="123.0" />
+                        <TextField fx:id="txtUsuario" layoutX="140.0" layoutY="188.0" />
+                        <TextField fx:id="txtApellidos" layoutX="140.0" layoutY="253.0" />
+                        <Button fx:id="btnGuardarDatos" layoutX="123.0" layoutY="386.0" mnemonicParsing="false" style="-fx-background-color: #382D00;" text="GUARDAR" textFill="#e2d7aa">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="58.0" layoutY="322.0" text="PUESTO" />
+                        <ChoiceBox fx:id="cmbPuesto" layoutX="140.0" layoutY="318.0" prefWidth="150.0" />
+                        <Label layoutX="27.0" layoutY="51.0" text="MODIFICAR / GUARDAR EMPLEADOS">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
          </children>
       </VBox>
    </center>
@@ -194,7 +198,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <TextField fx:id="txtBuscador" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="511.0" promptText="NOMBRE O CODIGO DE ARTICULO" HBox.hgrow="ALWAYS">
+            <TextField fx:id="txtBuscador" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="511.0" promptText="NOMBRE EMPLEADO" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="2.0" top="2.0" />
                </HBox.margin>

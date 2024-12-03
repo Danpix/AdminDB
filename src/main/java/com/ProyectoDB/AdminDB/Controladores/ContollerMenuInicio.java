@@ -1,8 +1,10 @@
 package com.ProyectoDB.AdminDB.Controladores;
 
+import com.ProyectoDB.AdminDB.Modelos.Empleado;
 import com.ProyectoDB.AdminDB.Modelos.Producto;
 import com.ProyectoDB.AdminDB.Servicios.EmpleadosServicio;
 import com.ProyectoDB.AdminDB.Servicios.ProductoServicio;
+import com.ProyectoDB.AdminDB.repetidas.SalidaSesiones;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,7 +28,8 @@ import static com.ProyectoDB.AdminDB.Main.context;
 public class ContollerMenuInicio {
     public Button btnCerrarSesion;
     public TableView<Producto> tableview;
-
+    @Autowired
+    public EmpleadosServicio empleadosServicio;
     public TableColumn id_producto;
     public TableColumn nombre_producto;
     public TableColumn precio_venta;
@@ -34,24 +37,14 @@ public class ContollerMenuInicio {
 
 
     public TextField txtBuscador;
-    public int bufer;
-    public int tamaño;
     public TableColumn cantidad;
     public TableColumn subtotal;
     public Button btnBuscar;
+    public MenuItem mIModificarEmp;
 
     public void CerrarSesion(ActionEvent actionEvent) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/InicioSesionB.fxml"));
-        loader.setControllerFactory(context::getBean);
-        try {
-            Scene scene=new Scene(loader.load());
-            Stage stage=(Stage) btnCerrarSesion.getScene().getWindow();
-            stage.setScene(scene);
-            stage.centerOnScreen();
-            stage.show();
-        } catch (IOException e) {
-            System.out.println("GG el proyecto fallo");
-        }
+        SalidaSesiones sal = new SalidaSesiones();
+        sal.InicioSesion(btnCerrarSesion);
     }
 
     public void Salir(ActionEvent actionEvent) {
@@ -72,8 +65,6 @@ public class ContollerMenuInicio {
             stage.show();
         } catch (IOException e) {
             System.out.println("GG el proyecto fallo");
-
-
         }
 
     }
@@ -85,5 +76,28 @@ public class ContollerMenuInicio {
         precio_venta.setCellValueFactory(new PropertyValueFactory<>("precio_venta"));
         tableview.setItems(productos);
         tableview.refresh();
+    }
+
+    public void ModificarClientes(ActionEvent actionEvent) {
+        List<Empleado> emp=empleadosServicio.MostrarTodos();
+        ObservableList<Empleado> observableEmp = FXCollections.observableArrayList(emp);
+
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/EmpledosMenu.fxml"));
+        loader.setControllerFactory(context::getBean);
+        try {
+            Scene scene=new Scene(loader.load());
+            Stage stage=(Stage) btnBuscar.getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+
+            stage.show();
+            ControllerEmpleadosMenu controllerEmpleadosMenu = loader.getController();
+            controllerEmpleadosMenu.MostrarTodos(observableEmp);
+        } catch (IOException e) {
+            System.out.println("GG el proyecto fallo");
+        }
+
     }
 }
