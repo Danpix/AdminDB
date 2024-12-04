@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoriaServicio {
@@ -18,5 +19,8 @@ public class CategoriaServicio {
 
     public List<String>obtenerNombre(Integer idCategoria){
         return repositorioCategoria.findNombreCategoriaByIdCategoria(idCategoria);
+    }
+    public Optional<Categoria>EncontrarPorID(Integer idCategoria){
+        return repositorioCategoria.findByIdcategoria(idCategoria);
     }
 }

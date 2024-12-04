@@ -65,6 +65,7 @@ public class ControllerClientesMenu {
         txtTelefono.setText(cliente.getTelefono_cliente());
         txtEmail.setText(cliente.getEmail_cliente());
 
+
     }
     public void MenuInicio(ActionEvent actionEvent) {
         SalidaSesiones sal = new SalidaSesiones();

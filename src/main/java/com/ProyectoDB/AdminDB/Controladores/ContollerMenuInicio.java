@@ -34,6 +34,8 @@ public class ContollerMenuInicio {
     public EmpleadosServicio empleadosServicio;
     @Autowired
     public ClienteServicio clienteServicio;
+    @Autowired
+    public ProductoServicio productoServicio;
     public TableColumn id_producto;
     public TableColumn nombre_producto;
     public TableColumn precio_venta;
@@ -117,6 +119,23 @@ public class ContollerMenuInicio {
     }
 
     public void MenuProductos(ActionEvent actionEvent) {
+        List<Producto> productos= productoServicio.mostrartodos();
+        ObservableList<Producto> observableproducto = FXCollections.observableArrayList(productos);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/ProductosMenu.fxml"));
+        loader.setControllerFactory(context::getBean);
+        try {
+            Scene scene=new Scene(loader.load());
+            Stage stage=(Stage) btnBuscar.getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+
+            stage.show();
+            ControllerProductosMenu controllerProductosMenu = loader.getController();
+            controllerProductosMenu.MostrarTodos(observableproducto);
+        } catch (IOException e) {
+            System.out.println("GG el proyecto fallo");
+        }
     }
 
     public void MenuInicio(ActionEvent actionEvent) {

@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface RepositorioCategoria extends JpaRepository<Categoria,Integer> {
@@ -14,4 +15,6 @@ public interface RepositorioCategoria extends JpaRepository<Categoria,Integer> {
 
     @Query("SELECT c.nombrecategoria FROM Producto p JOIN p.categoria c WHERE c.idcategoria = :idcategoria")
     List<String> findNombreCategoriaByIdCategoria(@Param("id_categoria") Integer idCategoria);
+
+    Optional<Categoria> findByIdcategoria(Integer id_categoria);
 }

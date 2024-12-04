@@ -16,7 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static com.ProyectoDB.AdminDB.Main.context;
 
@@ -83,8 +85,9 @@ public class ControllerBuscador {
         idprodsel=p.getIdproducto();
 
 
-        List<Producto> productos = productoServicio.BuscarPorID(idprodsel);
-        ObservableList<Producto> observableProductos = FXCollections.observableArrayList(productos);
+        Optional<Producto> productos = productoServicio.BuscarPorID(idprodsel);
+        List<Producto> productoList = productos.map(List::of).orElseGet(Collections::emptyList);
+        ObservableList<Producto> observableProductos = FXCollections.observableArrayList(productoList);
         contollerMenuInicio.setProductosObservableList(observableProductos);
 
         productosSeleccionados.addAll(observableProductos);

@@ -11,7 +11,8 @@ import java.util.List;
 public class Proveedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_proveedor;
+    @Column(name = "id_proveedor")
+    private Integer idproveedor;
     @Column(length = 30,nullable = false)
     private String nombre_prov,email_prov;
     @Column(length = 10,nullable = false)
