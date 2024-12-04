@@ -125,6 +125,7 @@ public class ContollerMenuInicio {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/ProductosMenu.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
+
             Scene scene=new Scene(loader.load());
             Stage stage=(Stage) btnBuscar.getScene().getWindow();
             stage.setScene(scene);
@@ -132,6 +133,7 @@ public class ContollerMenuInicio {
 
             stage.show();
             ControllerProductosMenu controllerProductosMenu = loader.getController();
+            controllerProductosMenu.cmbCategoria.getItems().setAll("","Baterias","Aceites","Filtros");
             controllerProductosMenu.MostrarTodos(observableproducto);
         } catch (IOException e) {
             System.out.println("GG el proyecto fallo");
