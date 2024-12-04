@@ -42,6 +42,14 @@ public class ControllerEmpleadosMenu {
     public Button btnCerrarSesion;
     public Integer idSeleccionado;
     public PasswordField txtContraseña;
+    public Button btnEmpleados;
+    public Button btnProveedores;
+    public Button btnClientes;
+    public Button btnVentas;
+    public Button btnProductos;
+    public Button btnInicio;
+    public Button btnEliminarEmp;
+    public Button btnSalir;
 
     public void SeleccionarUsuario(MouseEvent mouseEvent) {
         Empleado emp = this.tableEmpleados.getSelectionModel().getSelectedItem();
@@ -132,5 +140,27 @@ public class ControllerEmpleadosMenu {
         puesto_empT.setCellValueFactory(new PropertyValueFactory<>("puesto_emp"));
         tableEmpleados.setItems(observableEmp);
         tableEmpleados.refresh();
+    }
+
+    public void MenuInicio(ActionEvent actionEvent) {
+        SalidaSesiones salidaSesiones=new SalidaSesiones();
+        salidaSesiones.InicioCarga(btnInicio);
+    }
+
+    public void MenuProductos(ActionEvent actionEvent) {
+    }
+
+    public void MenuEmpleados(ActionEvent actionEvent) {
+        SalidaSesiones salidaSesiones=new SalidaSesiones();
+        salidaSesiones.EmpleadosCarga(btnEmpleados);
+    }
+
+    public void MenuProveedores(ActionEvent actionEvent) {
+    }
+
+    public void MenuClientes(ActionEvent actionEvent) {
+    }
+
+    public void MenuVentas(ActionEvent actionEvent) {
     }
 }

@@ -4,8 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -23,7 +21,7 @@
    <left>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="350.0" prefWidth="140.0" style="-fx-background-color: #382D00;" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="BOTTOM_LEFT" maxHeight="250.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="0.0" prefWidth="140.0" style="-fx-background-color: #382D00;" text="Inicio" textFill="#e2d7aa">
+            <Button fx:id="btnInicio" alignment="BOTTOM_LEFT" maxHeight="250.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MenuInicio" prefHeight="0.0" prefWidth="140.0" style="-fx-background-color: #382D00;" text="Inicio" textFill="#e2d7aa">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -35,14 +33,13 @@
                   <Font size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <MenuButton maxHeight="250.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" popupSide="RIGHT" prefHeight="0.0" prefWidth="140.0" style="-fx-background-color: #382D00;" stylesheets="@../../../../Styles/MenuInicioB.css" text="Productos" textFill="#e2d7aa">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
+            <Button fx:id="btnProductos" alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MenuProductos" prefHeight="38.0" prefWidth="146.0" style="-fx-background-color: #382D00;" text="Productos" textFill="#e2d7aa">
+               <font>
+                  <Font size="14.0" />
+               </font>
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -50,18 +47,14 @@
                      </image>
                   </ImageView>
                </graphic>
-               <font>
-                  <Font size="14.0" />
-               </font>
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
-            </MenuButton>
-            <MenuButton alignment="BOTTOM_LEFT" maxHeight="250.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" popupSide="RIGHT" prefHeight="0.0" prefWidth="140.0" style="-fx-background-color: #382D00;" stylesheets="@../../../../Styles/MenuInicioB.css" text="Ventas" textFill="#e2d7aa">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
+            </Button>
+            <Button fx:id="btnVentas" alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MenuVentas" prefHeight="38.0" prefWidth="146.0" style="-fx-background-color: #382D00;" text="Ventas" textFill="#e2d7aa">
+               <font>
+                  <Font size="14.0" />
+               </font>
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -69,18 +62,14 @@
                      </image>
                   </ImageView>
                </graphic>
-               <font>
-                  <Font size="14.0" />
-               </font>
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
-            </MenuButton>
-            <MenuButton alignment="BOTTOM_LEFT" maxHeight="250.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" popupSide="RIGHT" prefHeight="0.0" prefWidth="140.0" style="-fx-background-color: #382D00;" stylesheets="@../../../../Styles/MenuInicioB.css" text="Clientes" textFill="#e2d7aa">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
+            </Button>
+            <Button fx:id="btnClientes" alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MenuClientes" prefHeight="38.0" prefWidth="146.0" style="-fx-background-color: #382D00;" text="Clientes" textFill="#e2d7aa">
+               <font>
+                  <Font size="14.0" />
+               </font>
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -88,18 +77,14 @@
                      </image>
                   </ImageView>
                </graphic>
-               <font>
-                  <Font size="14.0" />
-               </font>
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
-            </MenuButton>
-            <MenuButton alignment="BOTTOM_LEFT" maxHeight="250.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" popupSide="RIGHT" prefHeight="0.0" prefWidth="140.0" style="-fx-background-color: #382D00;" stylesheets="@../../../../Styles/MenuInicioB.css" text="Proveedores" textFill="#e2d7aa">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
+            </Button>
+            <Button fx:id="btnProveedores" alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MenuProveedores" prefHeight="38.0" prefWidth="146.0" style="-fx-background-color: #382D00;" text="Proveedores" textFill="#e2d7aa">
+               <font>
+                  <Font size="14.0" />
+               </font>
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -107,18 +92,11 @@
                      </image>
                   </ImageView>
                </graphic>
-               <font>
-                  <Font size="14.0" />
-               </font>
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
-            </MenuButton>
-            <MenuButton alignment="BOTTOM_LEFT" maxHeight="250.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" popupSide="RIGHT" prefHeight="0.0" prefWidth="140.0" style="-fx-background-color: #382D00;" stylesheets="@../../../../Styles/MenuInicioB.css" text="Empleados" textFill="#e2d7aa">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
+            </Button>
+            <Button fx:id="btnEmpleados" alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MenuEmpleados" prefHeight="38.0" prefWidth="146.0" style="-fx-background-color: #382D00;" text="Empleados" textFill="#e2d7aa">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -130,9 +108,9 @@
                   <Font size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="200.0" />
+                  <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
-            </MenuButton>
+            </Button>
          </children>
       </VBox>
    </left>
@@ -162,7 +140,7 @@
                         <TextField fx:id="txtRfc" layoutX="141.0" layoutY="218.0" />
                         <TextField fx:id="txtUsuario" layoutX="137.0" layoutY="117.0" />
                         <TextField fx:id="txtApellidos" layoutX="140.0" layoutY="274.0" />
-                        <Button fx:id="btnGuardarDatos" layoutX="59.0" layoutY="388.0" mnemonicParsing="false" onAction="#GuardarEmp" style="-fx-background-color: #382D00;" text="GUARDAR" textFill="#e2d7aa">
+                        <Button fx:id="btnGuardarDatos" layoutX="58.0" layoutY="389.0" mnemonicParsing="false" onAction="#GuardarEmp" style="-fx-background-color: #382D00;" text="GUARDAR" textFill="#e2d7aa">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -174,14 +152,14 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btnEliminarEmp" layoutX="215.0" layoutY="388.0" mnemonicParsing="false" onAction="#Eliminar" style="-fx-background-color: #382D00;" text="ELMINAR" textFill="#e2d7aa">
+                        <Button fx:id="btnEliminarEmp" layoutX="212.0" layoutY="389.0" mnemonicParsing="false" onAction="#Eliminar" style="-fx-background-color: #382D00;" text="ELMINAR" textFill="#e2d7aa">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
                         <PasswordField fx:id="txtContraseña" layoutX="145.0" layoutY="171.0" />
                         <Label layoutX="57.0" layoutY="175.0" text="Contraseña" />
-                        <Button fx:id="btnModificar" layoutX="152.0" layoutY="459.0" mnemonicParsing="false" onAction="#Modificaremp" style="-fx-background-color: #382D00;" text="MODIFICAR" textFill="#e2d7aa">
+                        <Button fx:id="btnModificar" layoutX="133.0" layoutY="459.0" mnemonicParsing="false" onAction="#Modificaremp" style="-fx-background-color: #382D00;" text="MODIFICAR" textFill="#e2d7aa">
                            <font>
                               <Font size="18.0" />
                            </font>
