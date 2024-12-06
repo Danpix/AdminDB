@@ -2,6 +2,8 @@ package com.ProyectoDB.AdminDB.Servicios;
 
 import com.ProyectoDB.AdminDB.Modelos.Cliente;
 import com.ProyectoDB.AdminDB.Modelos.Empleado;
+import com.ProyectoDB.AdminDB.Modelos.Producto;
+import com.ProyectoDB.AdminDB.Modelos.Venta;
 import com.ProyectoDB.AdminDB.Repositorios.RepositorioClientes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,10 @@ import java.util.Optional;
 public class ClienteServicio {
     @Autowired
     RepositorioClientes repositorioClientes;
+    @Autowired
+    VentaSevicio ventaSevicio;
+
+
     public List<Cliente> mostrartodos(){
         return repositorioClientes.findAll();
     }
@@ -38,5 +44,9 @@ public class ClienteServicio {
             throw new IllegalArgumentException("El usuario con idcliente " + id + " no existe.");
         }
     }
+    public Optional<Cliente> encontrarporid(int id){
+        return repositorioClientes.findByIdcliente(id);
+    }
+
     
 }

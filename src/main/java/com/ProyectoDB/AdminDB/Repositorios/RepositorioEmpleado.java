@@ -20,4 +20,6 @@ public interface RepositorioEmpleado extends JpaRepository<Empleado,Integer> {
     void deleteByIdempleado(Integer id);
 
 
+
+
 }

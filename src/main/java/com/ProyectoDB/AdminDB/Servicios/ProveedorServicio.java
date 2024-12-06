@@ -27,7 +27,7 @@ public class ProveedorServicio {
     public void eliminarProveedor(Integer id){
         repositorioProveedor.deleteByIdproveedor(id);
     }
-    public Proveedor modificarCliente(Integer id, String nombre, String apellido, String telefono, String email) {
+    public Proveedor modificarProveedor(Integer id, String nombre, String telefono, String email) {
 
         Optional<Proveedor> usuarioOptional = repositorioProveedor.findByIdproveedor(id);
 

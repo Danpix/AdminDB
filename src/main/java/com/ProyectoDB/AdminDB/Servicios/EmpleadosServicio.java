@@ -2,9 +2,11 @@ package com.ProyectoDB.AdminDB.Servicios;
 
 import com.ProyectoDB.AdminDB.Modelos.Empleado;
 import com.ProyectoDB.AdminDB.Repositorios.RepositorioEmpleado;
+import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,4 +43,11 @@ public class EmpleadosServicio {
             throw new IllegalArgumentException("El usuario con idempleado " + idempleado + " no existe.");
         }
     }
+    public Optional<Empleado> encontrarID(String usuario,String contraseña){
+        return repositorioEmpleado.findByUsernameAndPassword(usuario,contraseña);
+    }
+    public Optional<Empleado> encontrarIDsolo(int id){
+        return repositorioEmpleado.findByIdempleado(id);
+    }
+
 }

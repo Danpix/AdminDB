@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ProyectoDB.AdminDB.Controladores.ContollerMenuInicio">
+   <left>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="350.0" prefWidth="140.0" style="-fx-background-color: #382D00;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnInicio" alignment="BOTTOM_LEFT" maxHeight="250.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MenuInicio" prefHeight="0.0" prefWidth="140.0" style="-fx-background-color: #382D00;" text="Inicio" textFill="#e2d7aa">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icons/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnProductos" alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MenuProductos" prefHeight="38.0" prefWidth="146.0" style="-fx-background-color: #382D00;" text="Productos" textFill="#e2d7aa">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icons/productos.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnVentas" alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MenuVentas" prefHeight="38.0" prefWidth="146.0" style="-fx-background-color: #382D00;" text="Ventas" textFill="#e2d7aa">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icons/Ventas.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnClientes" alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MenuClientes" prefHeight="38.0" prefWidth="146.0" style="-fx-background-color: #382D00;" text="Clientes" textFill="#e2d7aa">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icons/clientes.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnProveedores" alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MenuProveedores" prefHeight="38.0" prefWidth="146.0" style="-fx-background-color: #382D00;" text="Proveedores" textFill="#e2d7aa">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icons/proveedor.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnEmpleados" alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MenuEmpleados" prefHeight="38.0" prefWidth="146.0" style="-fx-background-color: #382D00;" text="Empleados" textFill="#e2d7aa">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icons/Empleados.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="100.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tableview" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="298.0" prefWidth="460.0" style="-fx-background-color: #E2D7AA;" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="id_producto" prefWidth="87.19998168945312" text="ID" />
+                  <TableColumn fx:id="nombre_producto" prefWidth="347.1999969482422" text="NOMBRE" />
+                  <TableColumn fx:id="precio_venta" minWidth="0.0" prefWidth="135.199951171875" text="PRECIO" />
+                  <TableColumn fx:id="cantidad" prefWidth="140.0" text="CANTIDAD" />
+                  <TableColumn fx:id="subtotal" prefWidth="139.2000732421875" text="SUBTOTAL" />
+                  <TableColumn fx:id="unidades_existencia" prefWidth="110.4000244140625" text="EXISTENCIA" />
+               </columns>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TableView>
+            <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="460.0" style="-fx-background-color: #4B4738;">
+               <children>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="100.0" text="TOTAL" textFill="#e2d7aa">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="4.0" top="5.0" />
+                     </HBox.margin></Label>
+                  <Label fx:id="txtTotal" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="170.0" text="\$0.00" textFill="#e2d7aa">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="4.0" top="5.0" />
+                     </HBox.margin></Label>
+                  <Button fx:id="btnVender" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#Venta" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #AA8800;" text="VENDER">
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <HBox alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #382D00;">
+         <children>
+            <Button fx:id="btnSalir" maxHeight="1.7976931348623157E308" maxWidth="140.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#Salir" prefHeight="48.0" prefWidth="140.0" style="-fx-background-color: #382D00;" text="Cerrar" textFill="#e2d7aa" HBox.hgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icons/Salir.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets bottom="2.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <TextField fx:id="txtBuscador" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="511.0" promptText="NOMBRE O CODIGO DE ARTICULO" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets bottom="2.0" top="2.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btnBuscar" maxHeight="1.7976931348623157E308" maxWidth="100.0" mnemonicParsing="false" onAction="#Buscar" prefHeight="48.0" prefWidth="110.0" style="-fx-background-color: #382D00;" text="Buscar" textFill="#e2d7aa" HBox.hgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icons/lupa.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="2.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnCerrarSesion" maxHeight="1.7976931348623157E308" maxWidth="150.0" mnemonicParsing="false" onAction="#CerrarSesion" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: #382D00;" text="Cerrar Sesion" textFill="#e2d7aa" HBox.hgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icons/CerrarSesion.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets bottom="2.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

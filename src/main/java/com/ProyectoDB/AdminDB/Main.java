@@ -15,13 +15,12 @@ public static ConfigurableApplicationContext context;
 	public static void main(String[] args) {
 		launch();
 		SpringApplication.run(Main.class, args);
-
 	}
 
 	@Override
 	public void start(Stage stage) throws Exception {
 		context = SpringApplication.run(Main.class);
-		FXMLLoader fxml= new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/InicioSesionB.fxml"));
+		FXMLLoader fxml= new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/InicioSesionB.fxml"));
 		fxml.setControllerFactory(context::getBean);
 		Scene scene = new Scene(fxml.load());
 		stage.initStyle(StageStyle.UNDECORATED); // <------ quitamos la barra por defecto de arriba del panel

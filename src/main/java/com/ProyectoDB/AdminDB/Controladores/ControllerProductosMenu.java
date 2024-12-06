@@ -7,6 +7,7 @@ import com.ProyectoDB.AdminDB.Modelos.Producto;
 import com.ProyectoDB.AdminDB.Servicios.CategoriaServicio;
 import com.ProyectoDB.AdminDB.Servicios.ProductoServicio;
 import com.ProyectoDB.AdminDB.repetidas.SalidaSesiones;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -52,7 +53,7 @@ public class ControllerProductosMenu {
     public SalidaSesiones salidaSesiones;
     public int idSeleccionado;
     public int idCategoria;
-    public TableColumn categoriaT;
+    public TableColumn<Producto,String> categoriaT;
 
 
     public void MostrarTodos(ObservableList<Producto> productos){
@@ -61,15 +62,18 @@ public class ControllerProductosMenu {
         precio_compraT.setCellValueFactory(new PropertyValueFactory<>("precio_compra"));
         precio_ventaT.setCellValueFactory(new PropertyValueFactory<>("precio_venta"));
         unidadesExistT.setCellValueFactory(new PropertyValueFactory<>("unidades_existencia"));
+        categoriaT.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria().getNombrecategoria()));
         tableProductos.setItems(productos);
         tableProductos.refresh();
     }
 
     public void MenuInicio(ActionEvent actionEvent) {
+        this.salidaSesiones = new SalidaSesiones();
         salidaSesiones.InicioCarga(btnInicio);
     }
 
     public void MenuProductos(ActionEvent actionEvent) {
+        this.salidaSesiones = new SalidaSesiones();
         salidaSesiones.ProductosCarga(btnProductos);
     }
 
@@ -123,6 +127,7 @@ public class ControllerProductosMenu {
         precio_compraT.setCellValueFactory(new PropertyValueFactory<>("precio_compra"));
         precio_ventaT.setCellValueFactory(new PropertyValueFactory<>("precio_venta"));
         unidadesExistT.setCellValueFactory(new PropertyValueFactory<>("unidades_existencia"));
+        categoriaT.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria().getNombrecategoria()));
         tableProductos.setItems(observableProd);
         tableProductos.refresh();
     }
@@ -140,6 +145,7 @@ public class ControllerProductosMenu {
         precio_compraT.setCellValueFactory(new PropertyValueFactory<>("precio_compra"));
         precio_ventaT.setCellValueFactory(new PropertyValueFactory<>("precio_venta"));
         unidadesExistT.setCellValueFactory(new PropertyValueFactory<>("unidades_existencia"));
+        categoriaT.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria().getNombrecategoria()));
         tableProductos.setItems(observableprod);
         tableProductos.refresh();
     }
@@ -158,6 +164,7 @@ public class ControllerProductosMenu {
         precio_compraT.setCellValueFactory(new PropertyValueFactory<>("precio_compra"));
         precio_ventaT.setCellValueFactory(new PropertyValueFactory<>("precio_venta"));
         unidadesExistT.setCellValueFactory(new PropertyValueFactory<>("unidades_existencia"));
+        categoriaT.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria().getNombrecategoria()));
         tableProductos.setItems(observableEmp);
         tableProductos.refresh();
     }
@@ -167,16 +174,32 @@ public class ControllerProductosMenu {
     }
 
     public void Buscar(ActionEvent actionEvent) {
+        List<Producto> productos = productoServicio.buscarNombre(txtBuscador.getText());
+        ObservableList<Producto> observableProductos = FXCollections.observableArrayList(productos);
+
+        id_prodT.setCellValueFactory(new PropertyValueFactory<>("idproducto"));
+        nombre_prodT.setCellValueFactory(new PropertyValueFactory<>("nombreproducto"));
+        precio_compraT.setCellValueFactory(new PropertyValueFactory<>("precio_compra"));
+        precio_ventaT.setCellValueFactory(new PropertyValueFactory<>("precio_venta"));
+        unidadesExistT.setCellValueFactory(new PropertyValueFactory<>("unidades_existencia"));
+
+
+        //.setCellValueFactory(new PropertyValueFactory<>("precio_venta") ); <------- pendiente subtotal y cantidad
+
+        tableProductos.setItems(observableProductos);
     }
     public void CerrarSesion(ActionEvent actionEvent) {
+        this.salidaSesiones = new SalidaSesiones();
         salidaSesiones.InicioSesion(btnCerrarSesion);
     }
 
     public void MenuProveedores(ActionEvent actionEvent) {
+        this.salidaSesiones = new SalidaSesiones();
         salidaSesiones.ProveedoresCarga(btnProveedores);
     }
 
     public void MenuClientes(ActionEvent actionEvent) {
+        this.salidaSesiones = new SalidaSesiones();
         salidaSesiones.ClientesCarga(btnClientes);
     }
 }

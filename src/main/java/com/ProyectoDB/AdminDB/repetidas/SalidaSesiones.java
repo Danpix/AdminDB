@@ -3,7 +3,6 @@ package com.ProyectoDB.AdminDB.repetidas;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.springframework.context.ApplicationContext;
 import javafx.scene.control.Button;
 
 
@@ -17,7 +16,7 @@ public class SalidaSesiones {
         System.exit(0);
     }
     public void InicioSesion(Button button){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/InicioSesionB.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/InicioSesionB.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
             Scene scene=new Scene(loader.load());
@@ -30,7 +29,7 @@ public class SalidaSesiones {
         }
     }
     public void InicioCarga(Button button){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/MenuInicioB.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/MenuInicioB.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
             Scene scene=new Scene(loader.load());
@@ -43,7 +42,7 @@ public class SalidaSesiones {
         }
     }
     public void ProductosCarga(Button button){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/InicioSesionB.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/InicioSesionB.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
             Scene scene=new Scene(loader.load());
@@ -56,7 +55,7 @@ public class SalidaSesiones {
         }
     }
     public void EmpleadosCarga(Button button){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/EmpledosMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/EmpledosMenu.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
             Scene scene=new Scene(loader.load());
@@ -70,7 +69,7 @@ public class SalidaSesiones {
         }
     }
     public void ClientesCarga(Button button){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/InicioSesionB.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/ClientesMenu.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
             Scene scene=new Scene(loader.load());
@@ -83,7 +82,7 @@ public class SalidaSesiones {
         }
     }
     public void ProveedoresCarga(Button button){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/InicioSesionB.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/InicioSesionB.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
             Scene scene=new Scene(loader.load());
@@ -96,7 +95,7 @@ public class SalidaSesiones {
         }
     }
     public void VentaCarga(Button button){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/InicioSesionB.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/InicioSesionB.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
             Scene scene=new Scene(loader.load());
@@ -109,7 +108,7 @@ public class SalidaSesiones {
         }
     }
     public void BuscadorP(Button button){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/BuscarProductos.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/BuscarProductos.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
             Scene scene=new Scene(loader.load());

@@ -1,13 +1,8 @@
 package com.ProyectoDB.AdminDB.Controladores;
 
-import com.ProyectoDB.AdminDB.Modelos.Cliente;
-import com.ProyectoDB.AdminDB.Modelos.Empleado;
-import com.ProyectoDB.AdminDB.Modelos.Producto;
-import com.ProyectoDB.AdminDB.Servicios.ClienteServicio;
-import com.ProyectoDB.AdminDB.Servicios.EmpleadosServicio;
-import com.ProyectoDB.AdminDB.Servicios.ProductoServicio;
+import com.ProyectoDB.AdminDB.Modelos.*;
+import com.ProyectoDB.AdminDB.Servicios.*;
 import com.ProyectoDB.AdminDB.repetidas.SalidaSesiones;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,8 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,6 +29,11 @@ public class ContollerMenuInicio {
     public ClienteServicio clienteServicio;
     @Autowired
     public ProductoServicio productoServicio;
+    @Autowired
+    public ProveedorServicio proveedorServicio;
+    public Label txtTotal;
+    @Autowired
+    VentaSevicio ventaSevicio;
     public TableColumn id_producto;
     public TableColumn nombre_producto;
     public TableColumn precio_venta;
@@ -54,7 +52,9 @@ public class ContollerMenuInicio {
     public Button btnProductos;
     public Button btnInicio;
     public Button btnSalir;
-
+    public Button btnVender;
+    public ObservableList<Producto> productosCarrito;
+    public int sum;
     public void CerrarSesion(ActionEvent actionEvent) {
         SalidaSesiones sal = new SalidaSesiones();
         sal.InicioSesion(btnCerrarSesion);
@@ -68,7 +68,7 @@ public class ContollerMenuInicio {
 
     public void Buscar(ActionEvent actionEvent) {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/BuscarProductos.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/BuscarProductos.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
             Scene scene=new Scene(loader.load());
@@ -83,19 +83,27 @@ public class ContollerMenuInicio {
     }
 
     public void setProductosObservableList(ObservableList<Producto> productos) {
+        productosCarrito=productos;
         id_producto.setCellValueFactory(new PropertyValueFactory<>("idproducto"));
         nombre_producto.setCellValueFactory(new PropertyValueFactory<>("nombreproducto"));
         unidades_existencia.setCellValueFactory(new PropertyValueFactory<>("unidades_existencia"));
         precio_venta.setCellValueFactory(new PropertyValueFactory<>("precio_venta"));
         tableview.setItems(productos);
         tableview.refresh();
+
+        sum=0;
+         //<----------------------- SUMA DE PRECIOS
+        for (Producto producto : productosCarrito){
+            sum += producto.getPrecio_venta();
+        }
+        txtTotal.setText("$ " + sum);
     }
 
     public void MenuClientes(ActionEvent actionEvent) {
         List<Cliente> clientes= clienteServicio.mostrartodos();
         ObservableList<Cliente> observablecliente = FXCollections.observableArrayList(clientes);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/ClientesMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/ClientesMenu.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
             Scene scene=new Scene(loader.load());
@@ -113,16 +121,53 @@ public class ContollerMenuInicio {
     }
 
     public void MenuProveedores(ActionEvent actionEvent) {
+        List<Proveedor> proveedors= proveedorServicio.mostrartodos();
+        ObservableList<Proveedor> observableproducto = FXCollections.observableArrayList(proveedors);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/ProveedorMenu.fxml"));
+        loader.setControllerFactory(context::getBean);
+        try {
+
+            Scene scene=new Scene(loader.load());
+            Stage stage=(Stage) btnBuscar.getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+
+            stage.show();
+            ControllerProveedorMenu controllerProveedorMenu = loader.getController();
+
+            controllerProveedorMenu.MostrarTodos(observableproducto);
+        } catch (IOException e) {
+            System.out.println("GG el proyecto fallo");
+        }
     }
 
     public void MenuVentas(ActionEvent actionEvent) {
+        List<Venta> vnt=ventaSevicio.mostrarTodo();
+        ObservableList<Venta> observablevnt= FXCollections.observableArrayList(vnt);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/VentaMenu.fxml"));
+        loader.setControllerFactory(context::getBean);
+        try {
+            Scene scene=new Scene(loader.load());
+            Stage stage=(Stage) btnBuscar.getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+
+            stage.show();
+            ControllerVenta controllerVenta = loader.getController();
+            controllerVenta.MostrarTodos(observablevnt);
+
+        } catch (IOException e) {
+            System.out.println("GG el proyecto fallo");
+        }
     }
 
     public void MenuProductos(ActionEvent actionEvent) {
         List<Producto> productos= productoServicio.mostrartodos();
         ObservableList<Producto> observableproducto = FXCollections.observableArrayList(productos);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/ProductosMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/ProductosMenu.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
 
@@ -133,7 +178,7 @@ public class ContollerMenuInicio {
 
             stage.show();
             ControllerProductosMenu controllerProductosMenu = loader.getController();
-            controllerProductosMenu.cmbCategoria.getItems().setAll("","Baterias","Aceites","Filtros");
+            controllerProductosMenu.cmbCategoria.getItems().setAll("","Baterias","Aceites","Filtros","Bujias","Anticongelantes","Focos");
             controllerProductosMenu.MostrarTodos(observableproducto);
         } catch (IOException e) {
             System.out.println("GG el proyecto fallo");
@@ -149,7 +194,7 @@ public class ContollerMenuInicio {
         List<Empleado> emp=empleadosServicio.MostrarTodos();
         ObservableList<Empleado> observableEmp = FXCollections.observableArrayList(emp);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/EmpledosMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/EmpledosMenu.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
             Scene scene=new Scene(loader.load());
@@ -163,5 +208,31 @@ public class ContollerMenuInicio {
         } catch (IOException e) {
             System.out.println("GG el proyecto fallo");
         }
+    }
+
+    public void Venta(ActionEvent actionEvent) {
+        List<Cliente> clientes = clienteServicio.mostrartodos();
+        ObservableList<Cliente> observablecliente = FXCollections.observableArrayList(clientes);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/DetalleVentaMenu.fxml"));
+        loader.setControllerFactory(context::getBean);
+
+        try {
+            Scene scene = new Scene(loader.load());
+            Stage newStage = new Stage(); // Crea un nuevo Stage
+            newStage.setScene(scene);
+            newStage.centerOnScreen();
+            newStage.show(); // Muestra el nuevo Stage
+
+            // Configura el controlador de la nueva ventana
+            ControllerDetalleVenta controllerClientesMenu = loader.getController();
+            controllerClientesMenu.DesplegarTodo(productosCarrito, observablecliente);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
     }
 }

@@ -12,7 +12,8 @@ import java.util.Date;
 public class Venta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer folio_venta;
+    @Column(name = "folio_venta")
+    private Integer folioventa;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
@@ -26,7 +27,7 @@ public class Venta {
     private Empleado empleado;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente",nullable = false)
+    @JoinColumn(name = "id_cliente",nullable = false, referencedColumnName = "id_cliente")
     private Cliente cliente;
 
     @OneToOne

@@ -64,7 +64,7 @@ public class ControllerBuscador {
     }
 
     public void Salir(ActionEvent actionEvent) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/MenuInicioB.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/MenuInicioB.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
             Scene scene=new Scene(loader.load());
@@ -92,7 +92,7 @@ public class ControllerBuscador {
 
         productosSeleccionados.addAll(observableProductos);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDB/MenuInicioB.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/com/ProyectoDB/AdminDBI/MenuInicioB.fxml"));
         loader.setControllerFactory(context::getBean);
         try {
             Scene scene=new Scene(loader.load());
